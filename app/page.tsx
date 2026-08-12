@@ -1,13 +1,12 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/components/ui/button";
-import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
-import { BackgroundBeams } from "@/components/ui/background-beams";
-import { Meteors } from "@/components/ui/meteors";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import { ScallopDivider } from "@/components/scallop-divider";
+import { Reveal } from "@/components/reveal";
+import { HoverImage } from "@/components/hover-image";
+import { WheatMark } from "@/components/wheat-mark";
 import { FEATURED_PRODUCTS, TESTIMONIALS } from "@/lib/bakery-data";
 
 export default function Home() {
@@ -31,10 +30,9 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-secondary/30">
-        <BackgroundBeams className="opacity-70" />
-        <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 py-20 md:grid-cols-2 md:py-28">
-          <div className="space-y-6">
+      <section className="overflow-hidden bg-secondary/30">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 px-6 py-20 md:grid-cols-[1.05fr_1fr] md:py-28">
+          <Reveal className="space-y-6">
             <p className="text-sm font-medium tracking-[0.2em] text-primary uppercase">
               214 Elm Street · Riverside District
             </p>
@@ -49,38 +47,49 @@ export default function Home() {
               single morning, no shortcuts.
             </p>
             <div className="flex flex-wrap items-center gap-4 pt-2">
-              <HoverBorderGradient
-                href="/menu"
-                fillClassName="bg-primary"
-                className="gap-2 px-7 py-3 text-base text-primary-foreground"
+              <Button
+                size="lg"
+                className="rounded-full bg-primary px-7 text-primary-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-md"
+                render={<Link href="/menu" />}
               >
                 See the Menu <ArrowRight className="h-4 w-4" />
-              </HoverBorderGradient>
+              </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="rounded-full border-foreground/20 px-7"
+                className="rounded-full border-foreground/20 px-7 transition-all hover:-translate-y-0.5 hover:border-primary/40"
                 render={<Link href="/about" />}
               >
                 Our Story
               </Button>
             </div>
-          </div>
-          <div className="relative">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] shadow-[0_30px_60px_-20px_rgba(43,27,18,0.35)]">
-              <Image
-                src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=1000&q=80&fm=jpg&fit=crop&auto=format"
-                alt="Fresh bread loaves cooling on a wooden rack at Careen Bakery"
-                fill
-                priority
-                className="object-cover"
+            <div className="flex items-center gap-3 pt-4 text-muted-foreground">
+              <WheatMark className="h-6 w-6 text-primary" />
+              <span className="text-sm">Est. 2016 — baking by hand ever since</span>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.15} className="relative">
+            <HoverImage
+              src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=1000&q=80&fm=jpg&fit=crop&auto=format"
+              alt="Fresh bread loaves cooling on a wooden rack at Careen Bakery"
+              className="aspect-[4/5] rounded-[2.5rem] shadow-[0_30px_60px_-20px_rgba(43,27,18,0.35)]"
+              priority
+            />
+            <div className="absolute -right-5 -bottom-8 h-40 w-32 overflow-hidden rounded-2xl border-4 border-background shadow-xl sm:h-48 sm:w-36">
+              <HoverImage
+                src="https://images.unsplash.com/photo-1621236378699-8597faf6a176?w=500&q=80&fm=jpg&fit=crop&auto=format"
+                alt="Fresh almond croissant"
+                className="h-full w-full"
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 hidden rounded-2xl border border-border bg-card px-6 py-4 shadow-lg md:block">
-              <p className="font-heading text-2xl font-medium text-primary">6am</p>
-              <p className="text-sm text-muted-foreground">first loaves out</p>
+            <div className="absolute -top-5 -left-5 flex h-20 w-20 flex-col items-center justify-center rounded-full border border-border bg-card text-center shadow-md">
+              <p className="font-heading text-lg font-medium text-primary">6am</p>
+              <p className="text-[0.65rem] leading-tight text-muted-foreground">
+                first loaves
+              </p>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -88,7 +97,7 @@ export default function Home() {
 
       {/* Featured products */}
       <section className="bg-background py-16 md:py-24">
-        <div className="mx-auto max-w-6xl px-6">
+        <Reveal className="mx-auto max-w-6xl px-6">
           <div className="mb-4 flex items-end justify-between gap-4">
             <div>
               <p className="mb-2 text-sm font-medium tracking-wide text-primary uppercase">
@@ -99,24 +108,21 @@ export default function Home() {
               </h2>
             </div>
           </div>
-        </div>
+        </Reveal>
         <Carousel items={cards} />
       </section>
 
       {/* Story teaser */}
       <section className="bg-secondary/40 py-16 md:py-24">
         <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
-          <div className="relative order-2 md:order-1">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] shadow-[0_20px_50px_-25px_rgba(43,27,18,0.4)]">
-              <Image
-                src="https://images.unsplash.com/photo-1533910534207-90f31029a78e?w=1000&q=80&fm=jpg&fit=crop&auto=format"
-                alt="Baker shaping dough by hand"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-          <div className="order-1 space-y-5 md:order-2">
+          <Reveal className="relative order-2 md:order-1">
+            <HoverImage
+              src="https://images.unsplash.com/photo-1533910534207-90f31029a78e?w=1000&q=80&fm=jpg&fit=crop&auto=format"
+              alt="Baker shaping dough by hand"
+              className="aspect-[4/3] rounded-[2rem] shadow-[0_20px_50px_-25px_rgba(43,27,18,0.4)]"
+            />
+          </Reveal>
+          <Reveal delay={0.1} className="order-1 space-y-5 md:order-2">
             <p className="text-sm font-medium tracking-wide text-primary uppercase">
               Our story
             </p>
@@ -136,44 +142,43 @@ export default function Home() {
             >
               Read the full story <ArrowRight className="ml-1 h-4 w-4" />
             </Button>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Testimonials */}
       <section className="bg-background py-16 md:py-24">
-        <div className="mx-auto max-w-6xl px-6 text-center">
+        <Reveal className="mx-auto max-w-6xl px-6 text-center">
           <p className="mb-2 text-sm font-medium tracking-wide text-primary uppercase">
             Word around the neighborhood
           </p>
           <h2 className="font-heading text-3xl font-medium text-foreground md:text-4xl">
             What our regulars say
           </h2>
-        </div>
+        </Reveal>
         <AnimatedTestimonials testimonials={[...TESTIMONIALS]} />
       </section>
 
       <ScallopDivider above="bg-background" below="text-primary" flip />
 
       {/* CTA */}
-      <section className="relative overflow-hidden bg-primary py-16 text-primary-foreground md:py-20">
-        <Meteors number={20} />
-        <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-6 px-6 text-center">
+      <section className="bg-primary py-16 text-primary-foreground md:py-20">
+        <Reveal className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-6 text-center">
           <h2 className="font-heading text-3xl font-medium md:text-4xl">
             Come by before the sourdough sells out.
           </h2>
           <p className="max-w-lg text-primary-foreground/85">
             214 Elm Street, Riverside District — open daily from 7am.
           </p>
-          <HoverBorderGradient
-            href="/contact"
-            fillClassName="bg-primary-foreground"
-            className="px-8 py-3 text-base text-primary"
-            containerClassName="border-primary-foreground/30"
+          <Button
+            size="lg"
+            variant="secondary"
+            className="rounded-full bg-primary-foreground px-8 text-primary shadow-sm transition-all hover:-translate-y-0.5 hover:bg-primary-foreground/90 hover:shadow-md"
+            render={<Link href="/contact" />}
           >
             Get Directions
-          </HoverBorderGradient>
-        </div>
+          </Button>
+        </Reveal>
       </section>
     </>
   );

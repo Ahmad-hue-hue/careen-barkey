@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { WheatMark } from "@/components/wheat-mark";
-import { BackgroundBeams } from "@/components/ui/background-beams";
-import { Timeline } from "@/components/ui/timeline";
+import { Reveal } from "@/components/reveal";
+import { HoverImage } from "@/components/hover-image";
+import { ScallopDivider } from "@/components/scallop-divider";
 
 export const metadata: Metadata = {
   title: "Our Story — Careen Bakery",
@@ -25,12 +25,18 @@ const VALUES = [
   },
 ];
 
+const STATS = [
+  { value: "10", label: "Years baking" },
+  { value: "6", label: "Bakers on the team" },
+  { value: "4am", label: "First mix of the day" },
+  { value: "36hr", label: "Sourdough ferment" },
+];
+
 export default function AboutPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-secondary/30 py-16 md:py-24">
-        <BackgroundBeams className="opacity-60" />
-        <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
+      <section className="bg-secondary/30 py-16 md:py-24">
+        <Reveal className="mx-auto max-w-3xl px-6 text-center">
           <span className="mb-4 inline-flex text-primary">
             <WheatMark className="h-8 w-8" />
           </span>
@@ -41,83 +47,110 @@ export default function AboutPage() {
             Careen Bakery started in a home kitchen with one sourdough starter
             and a stubborn refusal to cut corners. We still bake that way.
           </p>
+        </Reveal>
+      </section>
+
+      <ScallopDivider above="bg-secondary/30" below="text-background" />
+
+      <section className="bg-background py-16 md:py-24">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
+          <Reveal>
+            <HoverImage
+              src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1000&q=80&fm=jpg&fit=crop&auto=format"
+              alt="Baker pulling fresh loaves from the oven"
+              className="aspect-[4/3] rounded-2xl shadow-[0_20px_50px_-25px_rgba(43,27,18,0.4)]"
+            />
+          </Reveal>
+          <Reveal delay={0.1} className="space-y-5">
+            <p className="text-sm font-medium tracking-wide text-primary uppercase">
+              How it started
+            </p>
+            <h2 className="font-heading text-3xl font-medium text-foreground md:text-4xl">
+              One starter, a wood oven, and no plan to open a shop.
+            </h2>
+            <p className="leading-relaxed text-muted-foreground">
+              It began as a hobby — feeding a starter on the kitchen counter,
+              baking loaves for neighbors on weekends. Word spread faster
+              than we expected. Within a year we&apos;d outgrown the
+              kitchen; within three, we&apos;d found the space on Elm Street
+              that&apos;s still home today.
+            </p>
+            <p className="leading-relaxed text-muted-foreground">
+              The process hasn&apos;t changed much since then. We still mix
+              small batches, still shape everything by hand, and still
+              taste-test every new recipe on the same neighbors who
+              encouraged us to open in the first place.
+            </p>
+          </Reveal>
         </div>
       </section>
 
-      <section className="bg-background px-6 py-16 md:py-24">
-        <Timeline
-          data={[
-            {
-              title: "2016",
-              content: (
-                <div className="space-y-4">
-                  <p className="leading-relaxed text-muted-foreground">
-                    It began as a hobby — feeding a starter on the kitchen
-                    counter, baking loaves for neighbors on weekends. Word
-                    spread faster than we expected.
+      <section className="border-y border-border bg-secondary/40 py-12">
+        <Reveal className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-6 sm:grid-cols-4">
+          {STATS.map((stat) => (
+            <div key={stat.label} className="text-center">
+              <p className="font-heading text-3xl font-medium text-primary md:text-4xl">
+                {stat.value}
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground uppercase tracking-wide">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </Reveal>
+      </section>
+
+      <section className="bg-background py-16 md:py-24">
+        <div className="mx-auto max-w-6xl px-6">
+          <Reveal className="mb-12 text-center">
+            <p className="mb-2 text-sm font-medium tracking-wide text-primary uppercase">
+              What we believe
+            </p>
+            <h2 className="font-heading text-3xl font-medium text-foreground md:text-4xl">
+              Our values, baked in
+            </h2>
+          </Reveal>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {VALUES.map((value, i) => (
+              <Reveal key={value.title} delay={i * 0.1}>
+                <div className="h-full rounded-2xl border border-border bg-card p-7 transition-shadow hover:shadow-[0_20px_40px_-24px_rgba(43,27,18,0.35)]">
+                  <h3 className="mb-3 font-heading text-xl font-medium text-foreground">
+                    {value.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {value.body}
                   </p>
-                  <div className="relative aspect-[16/10] overflow-hidden rounded-2xl shadow-[0_20px_50px_-25px_rgba(43,27,18,0.4)]">
-                    <Image
-                      src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=900&q=80&fm=jpg&fit=crop&auto=format"
-                      alt="Baker pulling fresh loaves from the oven"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
                 </div>
-              ),
-            },
-            {
-              title: "2019",
-              content: (
-                <div className="space-y-4">
-                  <p className="leading-relaxed text-muted-foreground">
-                    Within a year we&apos;d outgrown the kitchen; within
-                    three, we&apos;d found the space on Elm Street
-                    that&apos;s still home today. The process hasn&apos;t
-                    changed much since then.
-                  </p>
-                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                    {VALUES.map((value) => (
-                      <div
-                        key={value.title}
-                        className="rounded-xl border border-border bg-card p-5"
-                      >
-                        <h3 className="mb-2 font-heading text-base font-medium text-foreground">
-                          {value.title}
-                        </h3>
-                        <p className="text-xs leading-relaxed text-muted-foreground">
-                          {value.body}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ),
-            },
-            {
-              title: "Today",
-              content: (
-                <div className="space-y-4">
-                  <p className="leading-relaxed text-muted-foreground">
-                    Six bakers, one oven, up before sunrise. Our team arrives
-                    at 4am to mix and shape the day&apos;s bread before the
-                    shop opens at 7 — most of us started as regulars
-                    ourselves.
-                  </p>
-                  <div className="relative aspect-[16/10] overflow-hidden rounded-2xl shadow-[0_20px_50px_-25px_rgba(43,27,18,0.4)]">
-                    <Image
-                      src="https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?w=900&q=80&fm=jpg&fit=crop&auto=format"
-                      alt="Bakery team working together in the kitchen"
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-              ),
-            },
-          ]}
-        />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-secondary/40 py-16 md:py-24">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
+          <Reveal className="space-y-5 md:order-1">
+            <p className="text-sm font-medium tracking-wide text-primary uppercase">
+              The team
+            </p>
+            <h2 className="font-heading text-3xl font-medium text-foreground md:text-4xl">
+              Six bakers, one oven, up before sunrise.
+            </h2>
+            <p className="leading-relaxed text-muted-foreground">
+              Our team arrives at 4am to mix and shape the day&apos;s bread
+              before the shop opens at 7. Most of us started as regulars
+              ourselves — a couple of us used to just come in for the
+              coffee.
+            </p>
+          </Reveal>
+          <Reveal delay={0.1} className="md:order-2">
+            <HoverImage
+              src="https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?w=1000&q=80&fm=jpg&fit=crop&auto=format"
+              alt="Bakery team working together in the kitchen"
+              className="aspect-[4/3] rounded-2xl shadow-[0_20px_50px_-25px_rgba(43,27,18,0.4)]"
+            />
+          </Reveal>
+        </div>
       </section>
     </>
   );

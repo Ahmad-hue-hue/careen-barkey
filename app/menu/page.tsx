@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Separator } from "@/components/ui/separator";
 import { WheatMark } from "@/components/wheat-mark";
-import { BackgroundBeams } from "@/components/ui/background-beams";
+import { Reveal } from "@/components/reveal";
 import { MENU_CATEGORIES } from "@/lib/bakery-data";
 
 export const metadata: Metadata = {
@@ -12,9 +12,8 @@ export const metadata: Metadata = {
 export default function MenuPage() {
   return (
     <div>
-      <section className="relative overflow-hidden bg-secondary/30 py-16 md:py-20">
-        <BackgroundBeams className="opacity-60" />
-        <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
+      <section className="bg-secondary/30 py-16 md:py-20">
+        <Reveal className="mx-auto max-w-3xl px-6 text-center">
           <span className="mb-4 inline-flex text-primary">
             <WheatMark className="h-8 w-8" />
           </span>
@@ -25,13 +24,14 @@ export default function MenuPage() {
             Baked in small batches, every morning. Availability changes daily
             — come early for the best selection.
           </p>
-        </div>
+        </Reveal>
       </section>
 
       <div className="mx-auto max-w-4xl px-6 py-16 md:py-24">
         <div className="space-y-16">
-          {MENU_CATEGORIES.map((category) => (
-            <section key={category.id} id={category.id}>
+          {MENU_CATEGORIES.map((category, i) => (
+            <Reveal key={category.id} delay={i * 0.05}>
+            <section id={category.id}>
               <div className="mb-6 flex items-center gap-4">
                 <h2 className="font-heading text-2xl font-medium whitespace-nowrap text-primary md:text-3xl">
                   {category.name}
@@ -60,6 +60,7 @@ export default function MenuPage() {
                 ))}
               </ul>
             </section>
+            </Reveal>
           ))}
         </div>
       </div>

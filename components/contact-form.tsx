@@ -4,7 +4,7 @@ import { useState, type FormEvent } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
+import { Button } from "@/components/ui/button";
 import { Check } from "@phosphor-icons/react/dist/ssr";
 
 export function ContactForm() {
@@ -59,15 +59,13 @@ export function ContactForm() {
           required
         />
       </div>
-      <HoverBorderGradient
-        as="button"
+      <Button
         type="submit"
-        fillClassName="bg-primary"
-        className="w-full justify-center px-8 py-3 text-base text-primary-foreground"
-        containerClassName="w-full sm:w-fit"
+        size="lg"
+        className="w-full rounded-full bg-primary text-primary-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-md sm:w-auto"
       >
         Send Message
-      </HoverBorderGradient>
+      </Button>
     </form>
   );
 }

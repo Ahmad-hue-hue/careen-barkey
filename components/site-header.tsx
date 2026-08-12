@@ -6,7 +6,6 @@ import { useState } from "react";
 import { List } from "@phosphor-icons/react/dist/ssr";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { WheatMark } from "@/components/wheat-mark";
 
@@ -26,10 +25,10 @@ export function SiteHeader() {
       <div className="mx-auto flex h-18 max-w-6xl items-center justify-between px-6 py-3">
         <Link
           href="/"
-          className="flex items-center gap-2.5 text-primary"
+          className="group flex items-center gap-2.5 text-primary"
           onClick={() => setOpen(false)}
         >
-          <WheatMark className="h-8 w-8" />
+          <WheatMark className="h-8 w-8 transition-transform duration-300 group-hover:rotate-6" />
           <span className="font-heading text-xl font-medium tracking-tight text-foreground">
             Careen Bakery
           </span>
@@ -43,27 +42,29 @@ export function SiteHeader() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "relative py-1 text-[0.95rem] font-medium text-muted-foreground transition-colors hover:text-foreground",
+                  "group relative py-1 text-[0.95rem] font-medium text-muted-foreground transition-colors hover:text-foreground",
                   active && "text-foreground",
                 )}
               >
                 {link.label}
-                {active && (
-                  <span className="absolute -bottom-0.5 left-0 h-[2px] w-full rounded-full bg-primary" />
-                )}
+                <span
+                  className={cn(
+                    "absolute -bottom-0.5 left-0 h-[2px] w-full origin-left scale-x-0 rounded-full bg-primary transition-transform duration-300 ease-out group-hover:scale-x-100",
+                    active && "scale-x-100",
+                  )}
+                />
               </Link>
             );
           })}
         </nav>
 
         <div className="hidden md:block">
-          <HoverBorderGradient
-            href="/contact"
-            className="text-primary-foreground"
-            fillClassName="bg-primary"
+          <Button
+            className="rounded-full bg-primary px-5 text-primary-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-md"
+            render={<Link href="/contact" />}
           >
             Order Ahead
-          </HoverBorderGradient>
+          </Button>
         </div>
 
         <Sheet open={open} onOpenChange={setOpen}>
