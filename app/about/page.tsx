@@ -50,7 +50,7 @@ export default function AboutPage() {
         </Reveal>
       </section>
 
-      <ScallopDivider above="bg-secondary/30" below="text-background" flip />
+      <ScallopDivider above="bg-background" below="text-secondary" flip />
 
       <section className="bg-background py-16 md:py-24">
         <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 md:grid-cols-2">
