@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { MapPin, Phone, EnvelopeSimple, InstagramLogo, FacebookLogo } from "@phosphor-icons/react/dist/ssr";
-import { WheatMark } from "@/components/wheat-mark";
+import { MapPin, Phone, EnvelopeSimple, InstagramLogo, FacebookLogo, Bread } from "@phosphor-icons/react/dist/ssr";
 import { ContactForm } from "@/components/contact-form";
 import { Reveal } from "@/components/reveal";
 import { HoverImage } from "@/components/hover-image";
@@ -16,7 +15,7 @@ export default function ContactPage() {
     <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
       <Reveal className="mb-14 text-center">
         <span className="mb-4 inline-flex text-primary">
-          <WheatMark className="h-8 w-8" />
+          <Bread className="h-8 w-8" weight="duotone" />
         </span>
         <h1 className="font-heading text-4xl font-medium text-foreground md:text-5xl">
           Visit Us

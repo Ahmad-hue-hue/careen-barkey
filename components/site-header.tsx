@@ -3,11 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { List } from "@phosphor-icons/react/dist/ssr";
+import { List, Bread } from "@phosphor-icons/react/dist/ssr";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
-import { WheatMark } from "@/components/wheat-mark";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -28,7 +27,10 @@ export function SiteHeader() {
           className="group flex items-center gap-2.5 text-primary"
           onClick={() => setOpen(false)}
         >
-          <WheatMark className="h-8 w-8 transition-transform duration-300 group-hover:rotate-6" />
+          <Bread
+            className="h-8 w-8 transition-transform duration-300 group-hover:rotate-6"
+            weight="duotone"
+          />
           <span className="font-heading text-xl font-medium tracking-tight text-foreground">
             Careen Bakery
           </span>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Separator } from "@/components/ui/separator";
-import { WheatMark } from "@/components/wheat-mark";
+import { Bread } from "@phosphor-icons/react/dist/ssr";
 import { Reveal } from "@/components/reveal";
 import { MENU_CATEGORIES } from "@/lib/bakery-data";
 
@@ -15,7 +15,7 @@ export default function MenuPage() {
       <section className="bg-secondary/30 py-16 md:py-20">
         <Reveal className="mx-auto max-w-3xl px-6 text-center">
           <span className="mb-4 inline-flex text-primary">
-            <WheatMark className="h-8 w-8" />
+            <Bread className="h-8 w-8" weight="duotone" />
           </span>
           <h1 className="font-heading text-4xl font-medium text-foreground md:text-5xl">
             The Menu

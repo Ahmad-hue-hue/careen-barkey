@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { InstagramLogo, FacebookLogo } from "@phosphor-icons/react/dist/ssr";
-import { WheatMark } from "@/components/wheat-mark";
+import { InstagramLogo, FacebookLogo, Bread } from "@phosphor-icons/react/dist/ssr";
 
 const HOURS = [
   ["Mon – Fri", "7:00am – 6:00pm"],
@@ -15,7 +14,7 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-3">
           <div className="text-center sm:text-left">
             <div className="flex justify-center gap-2 text-primary sm:justify-start">
-              <WheatMark className="h-6 w-6" />
+              <Bread className="h-6 w-6" weight="duotone" />
               <span className="font-heading text-lg font-medium text-foreground">
                 Careen Bakery
               </span>

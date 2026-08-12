@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { ArrowRight, Bread } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/components/ui/button";
 import { MovingBorderButton } from "@/components/ui/moving-border";
 import { FlipWords } from "@/components/ui/flip-words";
@@ -8,7 +8,6 @@ import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import { ScallopDivider } from "@/components/scallop-divider";
 import { Reveal } from "@/components/reveal";
 import { HoverImage } from "@/components/hover-image";
-import { WheatMark } from "@/components/wheat-mark";
 import { FEATURED_PRODUCTS, TESTIMONIALS } from "@/lib/bakery-data";
 
 const HERO_TAGLINES = [
@@ -71,7 +70,7 @@ export default function Home() {
               </MovingBorderButton>
             </div>
             <div className="flex items-center gap-3 pt-4 text-muted-foreground">
-              <WheatMark className="h-6 w-6 text-primary" />
+              <Bread className="h-6 w-6 text-primary" weight="duotone" />
               <span className="text-sm">Est. 2016 — baking by hand ever since</span>
             </div>
           </Reveal>
