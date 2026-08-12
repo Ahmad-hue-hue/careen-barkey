@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/components/ui/button";
+import { MovingBorderButton } from "@/components/ui/moving-border";
+import { FlipWords } from "@/components/ui/flip-words";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import { ScallopDivider } from "@/components/scallop-divider";
@@ -8,6 +10,13 @@ import { Reveal } from "@/components/reveal";
 import { HoverImage } from "@/components/hover-image";
 import { WheatMark } from "@/components/wheat-mark";
 import { FEATURED_PRODUCTS, TESTIMONIALS } from "@/lib/bakery-data";
+
+const HERO_TAGLINES = [
+  "waking up for.",
+  "the walk across town.",
+  "skipping breakfast for.",
+  "your Saturday morning.",
+];
 
 export default function Home() {
   const cards = FEATURED_PRODUCTS.map((product, index) => (
@@ -39,7 +48,9 @@ export default function Home() {
             <h1 className="font-heading text-5xl leading-[1.05] font-medium tracking-tight text-foreground md:text-6xl">
               Bread worth
               <br />
-              <span className="italic text-primary">waking up for.</span>
+              <span className="italic text-primary">
+                <FlipWords words={HERO_TAGLINES} />
+              </span>
             </h1>
             <p className="max-w-md text-lg leading-relaxed text-muted-foreground">
               Careen Bakery is a small neighborhood shop making slow-fermented
@@ -47,21 +58,17 @@ export default function Home() {
               single morning, no shortcuts.
             </p>
             <div className="flex flex-wrap items-center gap-4 pt-2">
-              <Button
-                size="lg"
-                className="rounded-full bg-primary px-7 text-primary-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-md"
-                render={<Link href="/menu" />}
-              >
+              <MovingBorderButton href="/menu" duration={3200}>
                 See the Menu <ArrowRight className="h-4 w-4" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="rounded-full border-foreground/20 px-7 transition-all hover:-translate-y-0.5 hover:border-primary/40"
-                render={<Link href="/about" />}
+              </MovingBorderButton>
+              <MovingBorderButton
+                href="/about"
+                duration={4200}
+                className="bg-transparent text-foreground"
+                borderClassName="bg-[radial-gradient(var(--border)_40%,transparent_65%)]"
               >
                 Our Story
-              </Button>
+              </MovingBorderButton>
             </div>
             <div className="flex items-center gap-3 pt-4 text-muted-foreground">
               <WheatMark className="h-6 w-6 text-primary" />

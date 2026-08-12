@@ -3,6 +3,7 @@ import { MapPin, Phone, EnvelopeSimple, InstagramLogo, FacebookLogo } from "@pho
 import { WheatMark } from "@/components/wheat-mark";
 import { ContactForm } from "@/components/contact-form";
 import { Reveal } from "@/components/reveal";
+import { HoverImage } from "@/components/hover-image";
 import { HOURS } from "@/lib/bakery-data";
 
 export const metadata: Metadata = {
@@ -25,78 +26,71 @@ export default function ContactPage() {
         </p>
       </Reveal>
 
-      <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-14 md:grid-cols-2">
         <Reveal className="space-y-8">
-          {/* Map placeholder */}
-          <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl border border-border bg-secondary/40">
-            <div
-              className="absolute inset-0 opacity-40"
-              style={{
-                backgroundImage:
-                  "linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)",
-                backgroundSize: "28px 28px",
-              }}
-            />
-            <div className="relative flex flex-col items-center gap-2 text-center">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg">
-                <MapPin className="h-6 w-6" weight="fill" />
-              </span>
-              <p className="font-heading text-lg font-medium text-foreground">
-                214 Elm Street
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Riverside District — map coming soon
-              </p>
+          <HoverImage
+            src="https://images.unsplash.com/photo-1517433367423-c7e5b0f35086?w=900&q=80&fm=jpg&fit=crop&auto=format"
+            alt="Careen Bakery storefront on Elm Street"
+            className="aspect-[4/3] rounded-2xl shadow-[0_20px_50px_-25px_rgba(43,27,18,0.35)]"
+          />
+
+          <div className="flex items-start gap-3">
+            <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" weight="bold" />
+            <div>
+              <p className="font-medium text-foreground">214 Elm Street</p>
+              <p className="text-sm text-muted-foreground">Riverside District</p>
             </div>
           </div>
 
-          <div className="space-y-4 rounded-2xl border border-border bg-card p-7">
-            <h2 className="font-heading text-xl font-medium text-foreground">
-              Hours
-            </h2>
-            <ul className="space-y-2 text-sm">
-              {HOURS.map(([day, time]) => (
-                <li key={day} className="flex justify-between text-muted-foreground">
-                  <span>{day}</span>
-                  <span className="font-medium text-foreground">{time}</span>
+          <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3">
+            <div>
+              <p className="mb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
+                Hours
+              </p>
+              <ul className="space-y-1 text-sm text-foreground">
+                {HOURS.map(([day, time]) => (
+                  <li key={day}>
+                    <span className="text-muted-foreground">{day}: </span>
+                    {time}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
+                Contact
+              </p>
+              <ul className="space-y-1.5 text-sm text-foreground">
+                <li className="flex items-center gap-1.5">
+                  <Phone className="h-3.5 w-3.5 text-primary" weight="bold" />
+                  (555) 013-0192
                 </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="space-y-4 rounded-2xl border border-border bg-card p-7">
-            <h2 className="font-heading text-xl font-medium text-foreground">
-              Get in touch
-            </h2>
-            <ul className="space-y-3 text-sm text-muted-foreground">
-              <li className="flex items-center gap-3">
-                <MapPin className="h-4 w-4 shrink-0 text-primary" weight="bold" />
-                214 Elm Street, Riverside District
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone className="h-4 w-4 shrink-0 text-primary" weight="bold" />
-                (555) 013-0192
-              </li>
-              <li className="flex items-center gap-3">
-                <EnvelopeSimple className="h-4 w-4 shrink-0 text-primary" weight="bold" />
-                hello@careenbakery.example
-              </li>
-            </ul>
-            <div className="flex gap-3 pt-1">
-              <a
-                href="#"
-                aria-label="Instagram"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
-              >
-                <InstagramLogo className="h-4 w-4" weight="bold" />
-              </a>
-              <a
-                href="#"
-                aria-label="Facebook"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
-              >
-                <FacebookLogo className="h-4 w-4" weight="bold" />
-              </a>
+                <li className="flex items-center gap-1.5">
+                  <EnvelopeSimple className="h-3.5 w-3.5 text-primary" weight="bold" />
+                  hello@careenbakery.example
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="mb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
+                Follow
+              </p>
+              <div className="flex gap-3">
+                <a
+                  href="#"
+                  aria-label="Instagram"
+                  className="text-muted-foreground transition-colors hover:text-primary"
+                >
+                  <InstagramLogo className="h-5 w-5" weight="bold" />
+                </a>
+                <a
+                  href="#"
+                  aria-label="Facebook"
+                  className="text-muted-foreground transition-colors hover:text-primary"
+                >
+                  <FacebookLogo className="h-5 w-5" weight="bold" />
+                </a>
+              </div>
             </div>
           </div>
         </Reveal>
