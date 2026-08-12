@@ -100,7 +100,7 @@ export default function Home() {
         </div>
       </section>
 
-      <ScallopDivider above="bg-background" below="text-secondary" flip />
+      <ScallopDivider above="bg-secondary/30" below="text-background" />
 
       {/* Featured products */}
       <section className="bg-background py-16 md:py-24">
