@@ -100,7 +100,7 @@ export default function Home() {
         </div>
       </section>
 
-      <ScallopDivider above="bg-secondary/30" below="text-background" />
+      <ScallopDivider above="bg-secondary/30" below="text-background" flip />
 
       {/* Featured products */}
       <section className="bg-background py-16 md:py-24">
@@ -166,7 +166,7 @@ export default function Home() {
         <AnimatedTestimonials testimonials={[...TESTIMONIALS]} />
       </section>
 
-      <ScallopDivider above="bg-background" below="text-primary" />
+      <ScallopDivider above="bg-background" below="text-primary" flip />
 
       {/* CTA */}
       <section className="bg-primary py-16 text-primary-foreground md:py-20">
