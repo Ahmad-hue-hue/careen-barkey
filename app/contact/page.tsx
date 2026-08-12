@@ -61,13 +61,13 @@ export default function ContactPage() {
                 Contact
               </p>
               <ul className="space-y-1.5 text-sm text-foreground">
-                <li className="flex items-center gap-1.5">
-                  <Phone className="h-3.5 w-3.5 text-primary" weight="bold" />
+                <li className="flex items-start gap-1.5">
+                  <Phone className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" weight="bold" />
                   (555) 013-0192
                 </li>
-                <li className="flex items-center gap-1.5">
-                  <EnvelopeSimple className="h-3.5 w-3.5 text-primary" weight="bold" />
-                  hello@careenbakery.example
+                <li className="flex items-start gap-1.5">
+                  <EnvelopeSimple className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" weight="bold" />
+                  <span className="break-all">hello@careenbakery.example</span>
                 </li>
               </ul>
             </div>
