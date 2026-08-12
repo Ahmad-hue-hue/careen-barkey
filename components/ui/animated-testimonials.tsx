@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
+import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 
 type Testimonial = {
   quote: string;
@@ -88,7 +88,7 @@ export function AnimatedTestimonials({
             <h3 className="text-2xl font-semibold text-foreground">
               {testimonials[active].name}
             </h3>
-            <p className="text-sm text-amber-700 dark:text-amber-400">
+            <p className="text-sm text-primary">
               {testimonials[active].designation}
             </p>
             <motion.p className="mt-8 text-lg text-muted-foreground">
@@ -115,14 +115,14 @@ export function AnimatedTestimonials({
               className="group/button flex h-8 w-8 items-center justify-center rounded-full bg-secondary"
               aria-label="Previous testimonial"
             >
-              <IconArrowLeft className="h-5 w-5 text-foreground transition-transform duration-300 group-hover/button:rotate-12" />
+              <ArrowLeft className="h-5 w-5 text-foreground transition-transform duration-300 group-hover/button:-translate-x-0.5" />
             </button>
             <button
               onClick={handleNext}
               className="group/button flex h-8 w-8 items-center justify-center rounded-full bg-secondary"
               aria-label="Next testimonial"
             >
-              <IconArrowRight className="h-5 w-5 text-foreground transition-transform duration-300 group-hover/button:-rotate-12" />
+              <ArrowRight className="h-5 w-5 text-foreground transition-transform duration-300 group-hover/button:translate-x-0.5" />
             </button>
           </div>
         </div>

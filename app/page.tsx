@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/components/ui/button";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
+import { BackgroundBeams } from "@/components/ui/background-beams";
+import { Meteors } from "@/components/ui/meteors";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import { ScallopDivider } from "@/components/scallop-divider";
-import { WheatMark } from "@/components/wheat-mark";
 import { FEATURED_PRODUCTS, TESTIMONIALS } from "@/lib/bakery-data";
 
 export default function Home() {
@@ -30,12 +32,12 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden bg-secondary/30">
-        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 py-20 md:grid-cols-2 md:py-28">
+        <BackgroundBeams className="opacity-70" />
+        <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 px-6 py-20 md:grid-cols-2 md:py-28">
           <div className="space-y-6">
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
-              <WheatMark className="h-4 w-4" />
-              Fresh from the oven, daily
-            </span>
+            <p className="text-sm font-medium tracking-[0.2em] text-primary uppercase">
+              214 Elm Street · Riverside District
+            </p>
             <h1 className="font-heading text-5xl leading-[1.05] font-medium tracking-tight text-foreground md:text-6xl">
               Bread worth
               <br />
@@ -46,14 +48,14 @@ export default function Home() {
               sourdough, hand-laminated pastry, and cakes from scratch — every
               single morning, no shortcuts.
             </p>
-            <div className="flex flex-wrap gap-4 pt-2">
-              <Button
-                size="lg"
-                className="rounded-full bg-primary px-7 text-primary-foreground hover:bg-primary/90"
-                render={<Link href="/menu" />}
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <HoverBorderGradient
+                href="/menu"
+                fillClassName="bg-primary"
+                className="gap-2 px-7 py-3 text-base text-primary-foreground"
               >
-                See the Menu <ArrowRight className="ml-1 h-4 w-4" />
-              </Button>
+                See the Menu <ArrowRight className="h-4 w-4" />
+              </HoverBorderGradient>
               <Button
                 size="lg"
                 variant="outline"
@@ -154,22 +156,23 @@ export default function Home() {
       <ScallopDivider above="bg-background" below="text-primary" flip />
 
       {/* CTA */}
-      <section className="bg-primary py-16 text-primary-foreground md:py-20">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-6 text-center">
+      <section className="relative overflow-hidden bg-primary py-16 text-primary-foreground md:py-20">
+        <Meteors number={20} />
+        <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-6 px-6 text-center">
           <h2 className="font-heading text-3xl font-medium md:text-4xl">
             Come by before the sourdough sells out.
           </h2>
           <p className="max-w-lg text-primary-foreground/85">
             214 Elm Street, Riverside District — open daily from 7am.
           </p>
-          <Button
-            size="lg"
-            variant="secondary"
-            className="rounded-full bg-primary-foreground px-8 text-primary hover:bg-primary-foreground/90"
-            render={<Link href="/contact" />}
+          <HoverBorderGradient
+            href="/contact"
+            fillClassName="bg-primary-foreground"
+            className="px-8 py-3 text-base text-primary"
+            containerClassName="border-primary-foreground/30"
           >
             Get Directions
-          </Button>
+          </HoverBorderGradient>
         </div>
       </section>
     </>

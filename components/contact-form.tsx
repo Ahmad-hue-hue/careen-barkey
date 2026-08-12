@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Check } from "lucide-react";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
+import { Check } from "@phosphor-icons/react/dist/ssr";
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -59,13 +59,15 @@ export function ContactForm() {
           required
         />
       </div>
-      <Button
+      <HoverBorderGradient
+        as="button"
         type="submit"
-        size="lg"
-        className="w-full rounded-full bg-primary text-primary-foreground hover:bg-primary/90 sm:w-auto"
+        fillClassName="bg-primary"
+        className="w-full justify-center px-8 py-3 text-base text-primary-foreground"
+        containerClassName="w-full sm:w-fit"
       >
         Send Message
-      </Button>
+      </HoverBorderGradient>
     </form>
   );
 }

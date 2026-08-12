@@ -10,7 +10,7 @@ import {
 } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image, { type ImageProps } from "next/image";
-import { IconArrowNarrowLeft, IconArrowNarrowRight, IconX } from "@tabler/icons-react";
+import { ArrowLeft, ArrowRight, X } from "@phosphor-icons/react/dist/ssr";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 
 interface CarouselProps {
@@ -119,7 +119,7 @@ export function Carousel({ items, initialScroll = 0 }: CarouselProps) {
             disabled={!canScrollLeft}
             aria-label="Scroll carousel left"
           >
-            <IconArrowNarrowLeft className="h-5 w-5 text-foreground" />
+            <ArrowLeft className="h-5 w-5 text-foreground" />
           </button>
           <button
             className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card disabled:opacity-40"
@@ -127,7 +127,7 @@ export function Carousel({ items, initialScroll = 0 }: CarouselProps) {
             disabled={!canScrollRight}
             aria-label="Scroll carousel right"
           >
-            <IconArrowNarrowRight className="h-5 w-5 text-foreground" />
+            <ArrowRight className="h-5 w-5 text-foreground" />
           </button>
         </div>
       </div>
@@ -200,11 +200,11 @@ export function Card({
                 onClick={handleClose}
                 aria-label="Close"
               >
-                <IconX className="h-6 w-6 text-foreground" />
+                <X className="h-6 w-6 text-foreground" />
               </button>
               <motion.p
                 layoutId={layout ? `category-${card.title}` : undefined}
-                className="text-base font-medium text-amber-700 dark:text-amber-400"
+                className="text-base font-medium text-primary"
               >
                 {card.category}
               </motion.p>

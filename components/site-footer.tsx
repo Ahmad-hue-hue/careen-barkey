@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { InstagramIcon, FacebookIcon } from "@/components/social-icons";
+import { InstagramLogo, FacebookLogo } from "@phosphor-icons/react/dist/ssr";
 import { WheatMark } from "@/components/wheat-mark";
 
 const HOURS = [
@@ -77,14 +77,14 @@ export function SiteFooter() {
               aria-label="Instagram"
               className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
             >
-              <InstagramIcon className="h-4 w-4" />
+              <InstagramLogo className="h-4 w-4" weight="bold" />
             </a>
             <a
               href="#"
               aria-label="Facebook"
               className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
             >
-              <FacebookIcon className="h-4 w-4" />
+              <FacebookLogo className="h-4 w-4" weight="bold" />
             </a>
           </div>
         </div>

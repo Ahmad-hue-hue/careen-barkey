@@ -3,9 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu } from "lucide-react";
+import { List } from "@phosphor-icons/react/dist/ssr";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { WheatMark } from "@/components/wheat-mark";
 
@@ -56,12 +57,13 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden md:block">
-          <Button
-            className="rounded-full bg-primary px-5 text-primary-foreground hover:bg-primary/90"
-            render={<Link href="/contact" />}
+          <HoverBorderGradient
+            href="/contact"
+            className="text-primary-foreground"
+            fillClassName="bg-primary"
           >
             Order Ahead
-          </Button>
+          </HoverBorderGradient>
         </div>
 
         <Sheet open={open} onOpenChange={setOpen}>
@@ -75,7 +77,7 @@ export function SiteHeader() {
               />
             }
           >
-            <Menu className="h-5 w-5" />
+            <List className="h-5 w-5" />
           </SheetTrigger>
           <SheetContent side="right" className="bg-background">
             <SheetTitle className="px-4 pt-4 font-heading text-lg">
